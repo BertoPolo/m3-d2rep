@@ -48,6 +48,7 @@
     </h4>
 
     <script>
+      const bandsPlace = document.getElementById("bandsPlace");
       const loadBands = () => {
         fetch(
           "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem"
@@ -57,6 +58,7 @@
           })
           .then((data) => {
             console.log(data);
+            data.forEach((element) => {});
           });
       };
 

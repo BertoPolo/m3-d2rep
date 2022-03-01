@@ -21,3 +21,26 @@ const mouseoverSong = function () {
   }
 };
 mouseoverSong();
+
+// m3-d2rep
+const bandsPlace = document.getElementById("bandsPlace");
+
+const loadBands = () => {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        bandsPlace.innerHTML += `<div class="col"> ${data.id}</div>`;
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+window.onload = function () {
+  loadBands();
+};
