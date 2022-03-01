@@ -25,7 +25,7 @@ mouseoverSong();
 // m3-d2rep
 const bandsPlace = document.getElementById("bandsPlace");
 
-const showAlbums = document.getElementById("showAlbums");
+const showAlbumsNode = document.getElementById("showAlbums");
 
 const showAlbums = () => {
   fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
@@ -36,7 +36,7 @@ const showAlbums = () => {
       console.log(data);
       const realData = data.data;
       realData.forEach((element) => {
-        showAlbums.innerHTML += `
+        showAlbumsNode.innerHTML += `
 <ul class="list-group">
 <li class="list-group-item">${element.title}</li>
 </ul>
