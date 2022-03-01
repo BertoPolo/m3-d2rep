@@ -24,15 +24,35 @@ mouseoverSong();
 
 // m3-d2rep
 const bandsPlace = document.getElementById("bandsPlace");
+
 const showAlbums = document.getElementById("showAlbums");
 
 const showAlbums = () => {
-  showAlbums.innerHTML += `
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      const realData = data.data;
+      realData.forEach((element) => {
+        showAlbums.innerHTML += `
 <ul class="list-group">
-<li class="list-group-item">An item</li>
+<li class="list-group-item">${element.title}</li>
 </ul>
 `;
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
+
+/* const showBand =()=>{
+
+
+}
+ */
 
 const loadBands = (band) => {
   fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + band)
@@ -41,27 +61,25 @@ const loadBands = (band) => {
     })
     .then((data) => {
       console.log(data);
-      console.log(data.data[0].title);
       const realData = data.data;
-
-      /*  realData.forEach((element) => {
+      realData.forEach((element) => {
         bandsPlace.innerHTML += `
         <div class="card" style="width: 18rem;">
-  <img src="${element.album.cover}" class="card-img-top" alt="...">
-  <div class="card-body">
+    <img src="${element.album.cover}" class="card-img-top" alt="...">
+    <div class="card-body">
     <h5 class="card-title">${element.title}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+    </div>
+    </div>
         `;
-      }) */
+      });
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-window.onload = function () {
+/* window.onload = function () {
   loadBands();
-};
+}; */
