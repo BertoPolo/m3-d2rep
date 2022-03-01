@@ -32,10 +32,11 @@ const loadBands = () => {
     })
     .then((data) => {
       console.log(data);
-      console.log(data[0].title);
-      data.forEach((element) => {
+      console.log(data.data[0].title);
+
+      /*  data.forEach((element) => {
         bandsPlace.innerHTML += `<div class="col"> ${data.title}</div>`;
-      });
+      }); */
     })
     .catch((error) => {
       console.log(error);
