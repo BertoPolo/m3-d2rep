@@ -47,24 +47,6 @@
       unique albums on the page
     </h4>
 
-    <script>
-      const bandsPlace = document.getElementById("bandsPlace");
-      const loadBands = () => {
-        fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem"
-        )
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-            data.forEach((element) => {});
-          });
-      };
-
-      window.onload = function () {
-        loadBands();
-      };
-    </script>
+    <script></script>
   </body>
 </html>

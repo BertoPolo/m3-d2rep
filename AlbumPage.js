@@ -24,6 +24,15 @@ mouseoverSong();
 
 // m3-d2rep
 const bandsPlace = document.getElementById("bandsPlace");
+const showAlbums = document.getElementById("showAlbums");
+
+const showAlbums = () => {
+  showAlbums.innerHTML += `
+<ul class="list-group">
+<li class="list-group-item">An item</li>
+</ul>
+`;
+};
 
 const loadBands = (band) => {
   fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + band)
@@ -35,7 +44,7 @@ const loadBands = (band) => {
       console.log(data.data[0].title);
       const realData = data.data;
 
-      realData.forEach((element) => {
+      /*  realData.forEach((element) => {
         bandsPlace.innerHTML += `
         <div class="card" style="width: 18rem;">
   <img src="${element.album.cover}" class="card-img-top" alt="...">
@@ -46,9 +55,13 @@ const loadBands = (band) => {
   </div>
 </div>
         `;
-      });
+      }) */
     })
     .catch((error) => {
       console.log(error);
     });
+};
+
+window.onload = function () {
+  loadBands();
 };
